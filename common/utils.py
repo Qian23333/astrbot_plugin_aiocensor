@@ -108,7 +108,7 @@ async def admin_check(
 
 # 本段代码修改自https://raw.githubusercontent.com/zouyonghe/astrbot_plugin_anti_porn/refs/heads/master/main.py
 async def dispose_msg(
-    message_id: int, group_id: int, user_id: int, self_id: int, client: CQHttp
+    message_id: int, group_id: int, user_id: int, duration: int, self_id: int, client: CQHttp
 ):
     """删除消息并禁言用户
 
@@ -116,6 +116,7 @@ async def dispose_msg(
         message_id: 消息ID
         group_id: 群组ID
         user_id: 用户ID
+        duraion: 禁言时长
         self_id: 机器人ID
         client: CQHttp客户端
     """
@@ -125,10 +126,13 @@ async def dispose_msg(
             self_id=self_id,
         )
 
+        if duration <= 0:
+            return
+
         await client.set_group_ban(
             group_id=group_id,
             user_id=user_id,
-            duration=5 * 60,
+            duration=duration,
             self_id=self_id,
         )
     except Exception as e:

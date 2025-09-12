@@ -36,6 +36,12 @@
     "hint":"仅aiocqhttp支持禁言与撤回",
     "type":"bool"
   },
+  "mute_duration":{
+    "description":"禁言时长（秒）",
+    "hint":"设为0则不禁言，仅撤回消息",
+    "type":"int",
+    "default": 300
+  },
   "enable_review_new_members": {
     "description": "是否在新成员加入后的一段时间内强制审查",
     "type": "bool",

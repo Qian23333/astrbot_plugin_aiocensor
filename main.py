@@ -142,6 +142,7 @@ class AIOCensor(Star):
                     group_id=group_id,
                     user_id=user_id,
                     self_id=self_id,
+                    duration=int(self.config.get("mute_duration", 300)),
                     client=event.bot,
                 )
             except Exception as e:
